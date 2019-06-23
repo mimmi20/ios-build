@@ -30,7 +30,9 @@ final class IosBuild implements IosBuildInterface
         try {
             $version = PeterIos::getVersion($needle);
         } catch (\Exception $e) {
+            // @codeCoverageIgnoreStart
             throw new BuildException('An error occured while detection the version', 0, $e);
+            // @codeCoverageIgnoreEnd
         }
 
         if (null === $version || false === $version) {
