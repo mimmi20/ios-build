@@ -1,6 +1,6 @@
 # ios-build
 
-This class add a class wrapper around [daverandom/exceptional-json](https://github.com/DaveRandom/ExceptionalJSON) to make mocking easier.
+This class add a class wrapper around [peterkahl/apple-ios-build-version](https://github.com/peterkahl/Apple-iOS-build) to make mocking easier.
 
 [![Latest Stable Version](https://poser.pugx.org/mimmi20/ios-build/v/stable?format=flat-square)](https://packagist.org/packages/mimmi20/ios-build)
 [![Latest Unstable Version](https://poser.pugx.org/mimmi20/ios-build/v/unstable?format=flat-square)](https://packagist.org/packages/mimmi20/ios-build)
@@ -29,11 +29,11 @@ composer require mimmi20/ios-build
 ## Usage
 
 ```php
-$json    = new \IosBuild\Json();
-$decoded = $json->decode();
+$build   = new \IosBuild\IosBuild();
+$version = $build->getVersion('<the build>');
 ```
 
-See also [daverandom/exceptional-json's decomantation](https://raw.githubusercontent.com/DaveRandom/ExceptionalJSON/master/readme.md)
+See also [peterkahl/apple-ios-build-version's documentation](https://raw.githubusercontent.com/peterkahl/Apple-iOS-build/master/readme.md)
 
 ## Issues and feature requests
 
