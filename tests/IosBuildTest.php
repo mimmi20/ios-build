@@ -17,6 +17,7 @@ declare(strict_types = 1);
  */
 namespace IosBuildTest;
 
+use IosBuild\BuildException;
 use IosBuild\IosBuild;
 use IosBuild\NotFoundException;
 use PHPUnit\Framework\TestCase;
@@ -38,6 +39,7 @@ final class IosBuildTest extends TestCase
 
     /**
      * @throws NotFoundException
+     * @throws BuildException
      *
      * @return void
      */
@@ -52,6 +54,8 @@ final class IosBuildTest extends TestCase
     /**
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws BuildException
+     * @throws NotFoundException
      *
      * @return void
      */

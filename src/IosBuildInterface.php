@@ -18,6 +18,9 @@ interface IosBuildInterface
      *
      * @param string $needle the build code
      *
+     * @throws BuildException
+     * @throws NotFoundException
+     *
      * @return string JSON encoded string
      */
     public function getVersion(string $needle): string;

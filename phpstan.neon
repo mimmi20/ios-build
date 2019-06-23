@@ -9,12 +9,13 @@ parameters:
     - %currentWorkingDirectory%/vendor/squizlabs/php_codesniffer/src/Util/Tokens.php
   excludes_analyse:
     - */tests/*/data/*
-  ignoreErrors:
-    - '~Unused @throws ExceptionalJSON\\EncodeErrorException annotation~'
-    - '~Missing @throws ExceptionalJSON\\Exception annotation~'
   exceptionRules:
     reportUnusedCatchesOfUncheckedExceptions: false
     uncheckedExceptions: []
+  classesAllowedToBeExtended:
+    - UnexpectedValueException
+#  ignoreErrors:
+#    - '~Unused @throws ExceptionalJSON\\EncodeErrorException annotation~'
 
 includes:
   - vendor/phpstan/phpstan-strict-rules/rules.neon
