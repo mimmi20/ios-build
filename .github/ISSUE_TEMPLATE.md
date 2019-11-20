@@ -1,6 +1,6 @@
 | Q                 | A
 | ------------------| ---------------
-| IosBuild version | x.y.z
+| ios-build version | x.y.z
 | PHP version       | x.y.z
 
 
