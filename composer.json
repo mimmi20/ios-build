@@ -21,7 +21,7 @@
   "require": {
     "php": "^7.1",
     "ext-json": "*",
-    "peterkahl/apple-ios-build-version": "^59.31"
+    "peterkahl/apple-ios-build-version": "^59.32"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.16.1",
