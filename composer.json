@@ -24,7 +24,7 @@
     "peterkahl/apple-ios-build-version": "^59.32"
   },
   "require-dev": {
-    "ergebnis/composer-normalize": "^2.2.1",
+    "ergebnis/composer-normalize": "^2.2.2",
     "ergebnis/phpstan-rules": "^0.14.2",
     "friendsofphp/php-cs-fixer": "^2.16.1",
     "infection/infection": "^0.13.6",
