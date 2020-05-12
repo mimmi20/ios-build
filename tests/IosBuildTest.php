@@ -2,19 +2,13 @@
 /**
  * This file is part of the ios-build package.
  *
- * Copyright (c) 2019, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2019-2020, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
 declare(strict_types = 1);
-/**
- * Created by PhpStorm.
- * User: Besitzer
- * Date: 09.09.2018
- * Time: 09:51
- */
 namespace IosBuildTest;
 
 use IosBuild\BuildException;
