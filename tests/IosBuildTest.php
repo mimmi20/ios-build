@@ -18,9 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 final class IosBuildTest extends TestCase
 {
-    /**
-     * @var IosBuild
-     */
+    /** @var IosBuild */
     private $object;
 
     /**
