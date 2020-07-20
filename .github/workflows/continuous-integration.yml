@@ -337,11 +337,11 @@ jobs:
         run: "echo \"::set-output name=directory::$(composer config cache-dir)\""
 
       - name: "Cache dependencies installed with composer"
-          uses: "actions/cache@v1"
-          with:
-            path: "${{ steps.determine-composer-cache-directory.outputs.directory }}"
-            key: "php-${{ matrix.php-versions }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
-            restore-keys: "php-${{ matrix.php-versions }}-composer-${{ matrix.dependencies }}-"
+        uses: "actions/cache@v1"
+        with:
+          path: "${{ steps.determine-composer-cache-directory.outputs.directory }}"
+          key: "php-${{ matrix.php-versions }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
+          restore-keys: "php-${{ matrix.php-versions }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Update dependencies with composer"
         run: "composer update --optimize-autoloader --prefer-dist --prefer-stable --no-progress --no-interaction --no-suggest -vv ${{ matrix.dependencies }}"
