@@ -6,7 +6,7 @@ parameters:
   paths:
     - src
     - tests
-  autoload_files:
+  scanFiles:
     - %currentWorkingDirectory%/vendor/autoload.php
     - %currentWorkingDirectory%/vendor/squizlabs/php_codesniffer/autoload.php
     - %currentWorkingDirectory%/vendor/squizlabs/php_codesniffer/src/Util/Tokens.php
@@ -15,8 +15,5 @@ parameters:
   exceptionRules:
     reportUnusedCatchesOfUncheckedExceptions: false
     uncheckedExceptions: []
-  ergebnis:
-    classesAllowedToBeExtended:
-      - UnexpectedValueException
 #  ignoreErrors:
 #    - '~Unused @throws ExceptionalJSON\\EncodeErrorException annotation~'
