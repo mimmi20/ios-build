@@ -568,7 +568,7 @@ final class IosBuild implements IosBuildInterface
      * @throws BuildException
      * @throws NotFoundException
      *
-     * @return string JSON encoded string
+     * @return string
      */
     public function getVersion(string $needle): string
     {
