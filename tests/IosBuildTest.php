@@ -54,5 +54,7 @@ final class IosBuildTest extends TestCase
     public function testGetVersion(): void
     {
         self::assertSame('12.4b3', $this->object->getVersion('16G5038d'));
+        self::assertSame('14.3b1', $this->object->getVersion('18C5044'));
+        self::assertSame('13.6b1', $this->object->getVersion('17G5044'));
     }
 }
