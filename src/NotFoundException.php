@@ -9,9 +9,12 @@
  */
 
 declare(strict_types = 1);
+
 namespace IosBuild;
 
-final class NotFoundException extends \UnexpectedValueException
+use UnexpectedValueException;
+
+final class NotFoundException extends UnexpectedValueException
 {
     // nothing to do here
 }
