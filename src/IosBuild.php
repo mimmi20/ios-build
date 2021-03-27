@@ -9,7 +9,14 @@
  */
 
 declare(strict_types = 1);
+
 namespace IosBuild;
+
+use function array_key_exists;
+use function array_keys;
+use function array_values;
+use function count;
+use function preg_match;
 
 final class IosBuild implements IosBuildInterface
 {
@@ -567,8 +574,6 @@ final class IosBuild implements IosBuildInterface
      *
      * @throws BuildException
      * @throws NotFoundException
-     *
-     * @return string
      */
     public function getVersion(string $needle): string
     {

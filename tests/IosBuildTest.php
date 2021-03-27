@@ -9,21 +9,20 @@
  */
 
 declare(strict_types = 1);
+
 namespace IosBuildTest;
 
 use IosBuild\BuildException;
 use IosBuild\IosBuild;
 use IosBuild\NotFoundException;
+use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 final class IosBuildTest extends TestCase
 {
-    /** @var IosBuild */
-    private $object;
+    private IosBuild $object;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         $this->object = new IosBuild();
@@ -32,8 +31,6 @@ final class IosBuildTest extends TestCase
     /**
      * @throws NotFoundException
      * @throws BuildException
-     *
-     * @return void
      */
     public function testGetVersionFail(): void
     {
@@ -44,12 +41,10 @@ final class IosBuildTest extends TestCase
     }
 
     /**
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws ExpectationFailedException
+     * @throws InvalidArgumentException
      * @throws BuildException
      * @throws NotFoundException
-     *
-     * @return void
      */
     public function testGetVersion(): void
     {
