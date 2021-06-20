@@ -20,6 +20,8 @@ use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
+use function is_numeric;
+use function mb_substr;
 use function sprintf;
 
 final class IosBuildTest extends TestCase
@@ -53,10 +55,22 @@ final class IosBuildTest extends TestCase
      */
     public function failVersionDataProvider(): array
     {
-        return [
+        $data = [
             ['\'x\': \'123\''],
             ['a16G5038d2'],
+            ['a16G5038d'],
+            ['16G5038d2'],
         ];
+
+        foreach (IosData::VERSIONS as $code => $version) {
+            if (is_numeric(mb_substr($code, -1))) {
+                continue;
+            }
+
+            $data[] = [$code . 'd', $version];
+        }
+
+        return $data;
     }
 
     /**
@@ -94,6 +108,12 @@ final class IosBuildTest extends TestCase
 
         foreach (IosData::VERSIONS as $code => $version) {
             $data[] = [$code, $version];
+
+            if (!is_numeric(mb_substr($code, -1))) {
+                continue;
+            }
+
+            $data[] = [$code . 'd', $version];
         }
 
         return $data;

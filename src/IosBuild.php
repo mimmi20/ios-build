@@ -39,12 +39,12 @@ final class IosBuild implements IosBuildInterface
         $versions  = array_values(IosData::VERSIONS);
         $candidate = false;
 
-        if (preg_match('/^(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?<buildCode>\d+)([a-z])?$/', $buildCode, $matchNeedle)) {
+        if (preg_match('/^(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)([a-z])?$/', $buildCode, $matchNeedle)) {
             // Walk backwards
             $count = count($builds);
 
             for ($key = $count - 1; 0 <= $key; --$key) {
-                preg_match('/^(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?<buildCode>\d+)([a-z])?$/', $builds[$key], $matchCode);
+                preg_match('/^(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)([a-z])?$/', $builds[$key], $matchCode);
 
                 if ($matchCode['primaryCode'] . $matchCode['secondaryCode'] . $matchCode['buildCode'] === $matchNeedle['primaryCode'] . $matchNeedle['secondaryCode'] . $matchNeedle['buildCode']) {
                     return $versions[$key];
