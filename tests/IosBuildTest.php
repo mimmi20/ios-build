@@ -104,6 +104,22 @@ final class IosBuildTest extends TestCase
                 '17G5044',
                 '13.6b1',
             ],
+            [
+                '18G5042d',
+                '14.7b3',
+            ],
+            [
+                '18G5042',
+                '14.7b3',
+            ],
+            [
+                '18G5043',
+                '14.7b3',
+            ],
+            [
+                '18G5041',
+                '14.7b2',
+            ],
         ];
 
         foreach (IosData::VERSIONS as $code => $version) {

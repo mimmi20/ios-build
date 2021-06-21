@@ -14,8 +14,10 @@ namespace IosBuild;
 
 use function array_key_exists;
 use function array_keys;
+use function array_reverse;
 use function array_values;
-use function count;
+use function end;
+use function ksort;
 use function preg_match;
 use function sprintf;
 
@@ -35,31 +37,34 @@ final class IosBuild implements IosBuildInterface
             return IosData::VERSIONS[$buildCode];
         }
 
-        $builds    = array_keys(IosData::VERSIONS);
-        $versions  = array_values(IosData::VERSIONS);
-        $candidate = false;
+        $builds    = array_reverse(array_keys(IosData::VERSIONS));
+        $versions  = array_reverse(array_values(IosData::VERSIONS));
+        $candidate = [];
 
         if (preg_match('/^(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)([a-z])?$/', $buildCode, $matchNeedle)) {
-            // Walk backwards
-            $count = count($builds);
-
-            for ($key = $count - 1; 0 <= $key; --$key) {
-                preg_match('/^(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)([a-z])?$/', $builds[$key], $matchCode);
+            foreach ($builds as $key => $build) {
+                preg_match('/(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)/', $build, $matchCode);
 
                 if ($matchCode['primaryCode'] . $matchCode['secondaryCode'] . $matchCode['buildCode'] === $matchNeedle['primaryCode'] . $matchNeedle['secondaryCode'] . $matchNeedle['buildCode']) {
                     return $versions[$key];
                 }
 
-                if ($matchCode['primaryCode'] . $matchCode['secondaryCode'] !== $matchNeedle['primaryCode'] . $matchNeedle['secondaryCode'] || $matchNeedle['buildCode'] <= $matchCode['buildCode']) {
+                if ($matchCode['primaryCode'] . $matchCode['secondaryCode'] !== $matchNeedle['primaryCode'] . $matchNeedle['secondaryCode']) {
                     continue;
                 }
 
-                $candidate = $versions[$key];
+                if ($matchNeedle['buildCode'] < $matchCode['buildCode']) {
+                    continue;
+                }
+
+                $candidate[$matchCode['buildCode']] = $versions[$key];
             }
         }
 
-        if (false !== $candidate) {
-            return $candidate;
+        if ([] !== $candidate) {
+            ksort($candidate);
+
+            return end($candidate);
         }
 
         throw new NotFoundException(
