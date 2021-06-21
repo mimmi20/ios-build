@@ -17,12 +17,12 @@ interface IosBuildInterface
     /**
      * Takes iOS build code and returns corresponding iOS version.
      *
-     * @param string $needle the build code
+     * @param string $buildCode the build code
      *
      * @return string JSON encoded string
      *
      * @throws BuildException
      * @throws NotFoundException
      */
-    public function getVersion(string $needle): string;
+    public function getVersion(string $buildCode): string;
 }

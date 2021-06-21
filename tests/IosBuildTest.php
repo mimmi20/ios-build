@@ -14,10 +14,15 @@ namespace IosBuildTest;
 
 use IosBuild\BuildException;
 use IosBuild\IosBuild;
+use IosBuild\IosData;
 use IosBuild\NotFoundException;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+
+use function is_numeric;
+use function mb_substr;
+use function sprintf;
 
 final class IosBuildTest extends TestCase
 {
@@ -31,13 +36,41 @@ final class IosBuildTest extends TestCase
     /**
      * @throws NotFoundException
      * @throws BuildException
+     *
+     * @dataProvider failVersionDataProvider
      */
-    public function testGetVersionFail(): void
+    public function testGetVersionFail(string $buildCode): void
     {
         $this->expectException(NotFoundException::class);
-        $this->expectExceptionMessage('Could not detect the version from the build');
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage(
+            sprintf('Could not detect the version from the buildCode "%s"', $buildCode)
+        );
 
-        $this->object->getVersion('\'x\': \'123\'');
+        $this->object->getVersion($buildCode);
+    }
+
+    /**
+     * @return array<int, array<int, string>>
+     */
+    public function failVersionDataProvider(): array
+    {
+        $data = [
+            ['\'x\': \'123\''],
+            ['a16G5038d2'],
+            ['a16G5038d'],
+            ['16G5038d2'],
+        ];
+
+        foreach (IosData::VERSIONS as $code => $version) {
+            if (is_numeric(mb_substr($code, -1))) {
+                continue;
+            }
+
+            $data[] = [$code . 'd', $version];
+        }
+
+        return $data;
     }
 
     /**
@@ -45,11 +78,60 @@ final class IosBuildTest extends TestCase
      * @throws InvalidArgumentException
      * @throws BuildException
      * @throws NotFoundException
+     *
+     * @dataProvider versionDataProvider
      */
-    public function testGetVersion(): void
+    public function testGetVersion(string $buildCode, string $expected): void
     {
-        self::assertSame('12.4b3', $this->object->getVersion('16G5038d'));
-        self::assertSame('14.3b1', $this->object->getVersion('18C5044'));
-        self::assertSame('13.6b1', $this->object->getVersion('17G5044'));
+        self::assertSame($expected, $this->object->getVersion($buildCode));
+    }
+
+    /**
+     * @return array<int, array<int, string>>
+     */
+    public function versionDataProvider(): array
+    {
+        $data = [
+            [
+                '16G5038d',
+                '12.4b3',
+            ],
+            [
+                '18C5044',
+                '14.3b1',
+            ],
+            [
+                '17G5044',
+                '13.6b1',
+            ],
+            [
+                '18G5042d',
+                '14.7b3',
+            ],
+            [
+                '18G5042',
+                '14.7b3',
+            ],
+            [
+                '18G5043',
+                '14.7b3',
+            ],
+            [
+                '18G5041',
+                '14.7b2',
+            ],
+        ];
+
+        foreach (IosData::VERSIONS as $code => $version) {
+            $data[] = [$code, $version];
+
+            if (!is_numeric(mb_substr($code, -1))) {
+                continue;
+            }
+
+            $data[] = [$code . 'd', $version];
+        }
+
+        return $data;
     }
 }
