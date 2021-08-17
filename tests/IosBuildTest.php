@@ -12,7 +12,6 @@ declare(strict_types = 1);
 
 namespace IosBuildTest;
 
-use IosBuild\BuildException;
 use IosBuild\IosBuild;
 use IosBuild\IosData;
 use IosBuild\NotFoundException;
@@ -35,7 +34,6 @@ final class IosBuildTest extends TestCase
 
     /**
      * @throws NotFoundException
-     * @throws BuildException
      *
      * @dataProvider failVersionDataProvider
      */
@@ -76,7 +74,6 @@ final class IosBuildTest extends TestCase
     /**
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
-     * @throws BuildException
      * @throws NotFoundException
      *
      * @dataProvider versionDataProvider
