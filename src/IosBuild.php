@@ -28,7 +28,6 @@ final class IosBuild implements IosBuildInterface
      *
      * @param string $buildCode the build code
      *
-     * @throws BuildException
      * @throws NotFoundException
      */
     public function getVersion(string $buildCode): string
