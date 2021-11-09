@@ -19,9 +19,6 @@ interface IosBuildInterface
      *
      * @param string $buildCode the build code
      *
-     * @return string JSON encoded string
-     *
-     * @throws BuildException
      * @throws NotFoundException
      */
     public function getVersion(string $buildCode): string;
