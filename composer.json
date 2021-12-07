@@ -1,9 +1,8 @@
 {
   "name": "mimmi20/ios-build",
-  "type": "library",
   "description": "Class wrapper for peterkahl/apple-ios-build-version",
-  "homepage": "https://github.com/mimmi20/ios-build",
   "license": "MIT",
+  "type": "library",
   "authors": [
     {
       "name": "Thomas Müller",
@@ -15,11 +14,17 @@
       "homepage": "https://github.com/mimmi20/ios-build/graphs/contributors"
     }
   ],
+  "homepage": "https://github.com/mimmi20/ios-build",
+  "support": {
+    "issues": "https://github.com/mimmi20/ios-build/issues",
+    "source": "https://github.com/mimmi20/ios-build"
+  },
   "require": {
     "php": "^7.4.3 || ^8.0.0",
     "ext-mbstring": "*"
   },
   "require-dev": {
+    "ergebnis/composer-normalize": "^2.17.0",
     "mimmi20/coding-standard": "^2.5.1",
     "phpstan/extension-installer": "^1.1.0",
     "phpstan/phpstan": "^1.2.0",
@@ -28,10 +33,8 @@
     "phpunit/phpunit": "^9.5.10",
     "rector/rector": "^0.12.5"
   },
-  "config": {
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "IosBuild\\": "src/"
@@ -42,10 +45,8 @@
       "IosBuildTest\\": "tests/"
     }
   },
-  "minimum-stability": "stable",
-  "prefer-stable": true,
-  "support": {
-    "issues": "https://github.com/mimmi20/ios-build/issues",
-    "source": "https://github.com/mimmi20/ios-build"
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
   }
 }
