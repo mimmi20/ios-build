@@ -2,7 +2,7 @@
 /**
  * This file is part of the ios-build package.
  *
- * Copyright (c) 2019-2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2019-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -40,9 +40,19 @@ final class IosBuild implements IosBuildInterface
         $versions  = array_reverse(array_values(IosData::VERSIONS));
         $candidate = [];
 
-        if (preg_match('/^(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)([a-z])?$/', $buildCode, $matchNeedle)) {
+        if (
+            preg_match(
+                '/^(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)([a-z])?$/',
+                $buildCode,
+                $matchNeedle,
+            )
+        ) {
             foreach ($builds as $key => $build) {
-                preg_match('/(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)/', $build, $matchCode);
+                preg_match(
+                    '/(?P<primaryCode>\d+)(?P<secondaryCode>[A-Z])(?P<buildCode>\d+)/',
+                    $build,
+                    $matchCode,
+                );
 
                 if ($matchCode['primaryCode'] . $matchCode['secondaryCode'] . $matchCode['buildCode'] === $matchNeedle['primaryCode'] . $matchNeedle['secondaryCode'] . $matchNeedle['buildCode']) {
                     return $versions[$key];
@@ -60,14 +70,14 @@ final class IosBuild implements IosBuildInterface
             }
         }
 
-        if ([] !== $candidate) {
+        if ($candidate !== []) {
             ksort($candidate);
 
             return end($candidate);
         }
 
         throw new NotFoundException(
-            sprintf('Could not detect the version from the buildCode "%s"', $buildCode)
+            sprintf('Could not detect the version from the buildCode "%s"', $buildCode),
         );
     }
 }

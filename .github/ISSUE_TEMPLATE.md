@@ -1,7 +1,7 @@
-| Q                 | A
-| ------------------| ---------------
-| ios-build version | x.y.z
-| PHP version       | x.y.z
+| Q                 | A              |
+| ------------------|----------------|
+| ios-build version | x.y.z          |
+| PHP version       | x.y.z          |
 
 
 <!--
