@@ -10,7 +10,6 @@
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/mimmi20/ios-build.svg)](https://isitmaintained.com/project/mimmi20/ios-build "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/mimmi20/ios-build.svg)](https://isitmaintained.com/project/mimmi20/ios-build "Percentage of issues still open")
 
-
 ## Requirements
 
 This library requires PHP 8.1+.
@@ -33,4 +32,4 @@ $version = $build->getVersion('<the build>');
 ## Issues and feature requests
 
 Please report your issues and ask for new features on the GitHub Issue Tracker
-at https://github.com/mimmi20/ios-build/issues
+at <https://github.com/mimmi20/ios-build/issues>
