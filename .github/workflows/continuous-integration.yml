@@ -69,4 +69,6 @@ jobs:
       min-msi: 91
       min-covered-msi: 91
       upload-codecov: true
-      upload-codeclimate: false
+      upload-codeclimate: true
+    secrets:
+      ENV_CODECLIMATE_API_KEY: "${{ secrets.CODECLIMATE_API_KEY }}"
