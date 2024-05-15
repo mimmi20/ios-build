@@ -12,6 +12,8 @@ declare(strict_types = 1);
 
 namespace IosBuild;
 
+use IosBuild\Exception\NotFoundException;
+
 use function array_key_exists;
 use function array_keys;
 use function array_reverse;

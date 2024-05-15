@@ -12,9 +12,9 @@ declare(strict_types = 1);
 
 namespace IosBuildTest;
 
+use IosBuild\Exception\NotFoundException;
 use IosBuild\IosBuild;
 use IosBuild\IosData;
-use IosBuild\NotFoundException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;

@@ -12,6 +12,8 @@ declare(strict_types = 1);
 
 namespace IosBuild;
 
+use IosBuild\Exception\NotFoundException;
+
 interface IosBuildInterface
 {
     /**
