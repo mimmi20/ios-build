@@ -10,7 +10,7 @@
 
 declare(strict_types = 1);
 
-namespace IosBuild;
+namespace IosBuild\Exception;
 
 use UnexpectedValueException;
 
