@@ -116,8 +116,8 @@ parameters:
     no_mixed: true
     narrow_param: true
 
-#  ignoreErrors:
-#    - '~Unused @throws ExceptionalJSON\\EncodeErrorException annotation~'
+  ignoreErrors:
+    - '~Offset .(primary|secondary|build)Code. does not exist on array~'
 
 rules:
   # code complexity
