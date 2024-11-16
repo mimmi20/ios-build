@@ -14,7 +14,7 @@ namespace IosBuild;
 
 final class IosData
 {
-    public const VERSIONS = [
+    public const array VERSIONS = [
         '1A420' => '1.0b1',
         '1A543a' => '1.0',
         '1C25' => '1.0.1',

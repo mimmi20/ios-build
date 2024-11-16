@@ -15,6 +15,7 @@ namespace IosBuildTest;
 use IosBuild\Exception\NotFoundException;
 use IosBuild\IosBuild;
 use IosBuild\IosData;
+use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
@@ -28,6 +29,7 @@ final class IosBuildTest extends TestCase
     private IosBuild $object;
 
     /** @throws void */
+    #[Override]
     protected function setUp(): void
     {
         $this->object = new IosBuild();
