@@ -21,6 +21,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
+use function array_keys;
 use function is_numeric;
 use function mb_substr;
 use function sprintf;
@@ -63,12 +64,12 @@ final class IosBuildTest extends TestCase
             ['16G5038d2'],
         ];
 
-        foreach (IosData::VERSIONS as $code => $version) {
+        foreach (array_keys(IosData::VERSIONS) as $code) {
             if (is_numeric(mb_substr($code, -1))) {
                 continue;
             }
 
-            $data[] = [$code . 'd', $version];
+            $data[] = [$code . 'd'];
         }
 
         return $data;
