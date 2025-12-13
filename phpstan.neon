@@ -110,6 +110,14 @@ parameters:
   ignoreErrors:
     - '~Offset .(primary|secondary|build)Code. might not exist on array~'
 
+services:
+  errorFormatter.sarif:
+    class: PHPStanSarifErrorFormatter\SarifErrorFormatter
+    arguments:
+      relativePathHelper: @simpleRelativePathHelper
+      currentWorkingDirectory: %currentWorkingDirectory%
+      pretty: true
+
 rules:
   # code complexity
   - Symplify\PHPStanRules\Rules\NoDynamicNameRule
