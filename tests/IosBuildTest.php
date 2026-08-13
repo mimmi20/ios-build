@@ -43,7 +43,7 @@ final class IosBuildTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $this->expectExceptionCode(0);
-        $this->expectExceptionMessage(
+        $this->expectExceptionMessageIsOrContains(
             sprintf('Could not detect the version from the buildCode "%s"', $buildCode),
         );
 
