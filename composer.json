@@ -23,6 +23,7 @@
     "php": "~8.5.0 || ~8.6.0"
   },
   "require-dev": {
+    "ext-mbstring": "*",
     "ergebnis/composer-normalize": "^2.52.0",
     "infection/infection": "^0.34.1",
     "jbelien/phpstan-sarif-formatter": "^1.2.0",
