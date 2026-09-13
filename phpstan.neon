@@ -115,6 +115,8 @@ parameters:
 
   ignoreErrors:
     - '~Offset .(primary|secondary|build)Code. might not exist on array~'
+    -
+      identifier: argument.named
 
 services:
   errorFormatter.sarif:
