@@ -38,7 +38,7 @@ final class IosBuildTest extends TestCase
     }
 
     /** @throws NotFoundException */
-    #[DataProvider('failVersionDataProvider')]
+    #[DataProvider(methodName: 'failVersionDataProvider')]
     public function testGetVersionFail(string $buildCode): void
     {
         $this->expectException(NotFoundException::class);
@@ -79,7 +79,7 @@ final class IosBuildTest extends TestCase
      * @throws ExpectationFailedException
      * @throws NotFoundException
      */
-    #[DataProvider('versionDataProvider')]
+    #[DataProvider(methodName: 'versionDataProvider')]
     public function testGetVersion(string $buildCode, string $expected): void
     {
         self::assertSame($expected, $this->object->getVersion($buildCode));
